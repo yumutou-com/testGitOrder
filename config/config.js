@@ -14,9 +14,10 @@ export default {
   treeShaking: true,
   ignoreMomentLocale: true,
   targets: { ie: 11 },
-  base:`${base}/`,
+  base: `${base}/`,
   publicPath: './',
   plugins: [
+    ['@umijs/plugin-qiankun'],
     [
       'umi-plugin-react',
       {
@@ -31,15 +32,16 @@ export default {
         title: '应用的标题',
         dll: {
           include: ['dva', 'dva/router', 'dva/saga', 'dva/fetch', 'antd/es'],
+          exclude: ['@umijs/plugin-qiankun'],
         },
         pwa:
           process.env.NODE_ENV === 'production'
             ? {
-                workboxPluginMode: 'InjectManifest',
-                workboxOptions: {
-                  importWorkboxFrom: 'local',
-                },
-              }
+              workboxPluginMode: 'InjectManifest',
+              workboxOptions: {
+                importWorkboxFrom: 'local',
+              },
+            }
             : false,
         locale: {
           enable: true,
