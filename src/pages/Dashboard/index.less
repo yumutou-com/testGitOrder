@@ -1,34 +1,34 @@
 @import '../../themes/default.less';
 
 .main-box {
-  height: 100vh;
-  font-size: 14px;
-  overflow: hidden;
   position: relative;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 14px;
   :global {
     .menu-header {
-      height: 60px;
-      line-height: 60px;
-      color: @white;
-      font-size: 22px;
-      font-weight: 700;
-      text-align: center;
-      width: 100%;
-      box-shadow: @box-shadow-base;
       z-index: 1;
+      width: 100%;
+      height: 60px;
+      color: @white;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 60px;
+      text-align: center;
+      box-shadow: @box-shadow-base;
     }
     .menu-box {
+      position: relative;
       width: 100%;
       height: calc(100vh - 60px);
       background-color: @white;
-      position: relative;
       .scrollbar-container{
         width: 100%;
       }
       .ant-menu-inline {
         width: 320px;
-        border-right-width: 0;
         margin: 0 auto;
+        border-right-width: 0;
       }
     }
   }
