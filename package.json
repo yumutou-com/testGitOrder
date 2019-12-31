@@ -8,6 +8,7 @@
     "start:no-ui": "cross-env UMI_UI=none umi dev",
     "build": "umi build",
     "test": "umi test",
+    "lint-staged": "lint-staged",
     "lint": "eslint --ext .js src mock tests",
     "lint-fix": "npm run lint-fix:script && npm run lint-fix:style",
     "lint-fix:script": "npm run lint:script -- --fix",
@@ -28,35 +29,36 @@
     "babel-eslint": "^9.0.0",
     "cross-env": "^6.0.0",
     "eslint": "^5.4.0",
-    "eslint-config-umi": "^1.4.0",
-    "eslint-plugin-flowtype": "^2.50.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.11.1",
     "eslint-config-airbnb": "^18.0.0",
     "eslint-config-prettier": "^6.0.0",
+    "eslint-config-umi": "^1.4.0",
     "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^23.0.2",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-markdown": "^1.0.0",
+    "eslint-plugin-react": "^7.11.1",
     "eslint-tinker": "^0.5.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
     "prettier": "^1.17.1",
-    "pretty-quick": "^2.0.0",
     "react-test-renderer": "^16.7.0",
     "umi": "^2.7.7",
     "umi-plugin-react": "^1.8.4"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && lint-staged"
+      "pre-commit": "npm run lint-staged"
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
+    "**/*.less": "stylelint --syntax less",
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write",
       "git add"
-    ]
+    ],
+    "**/*.{js,jsx,ts,tsx}": "npm run lint-fix"
   },
   "engines": {
     "node": ">=8.0.0"
