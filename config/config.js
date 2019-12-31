@@ -9,8 +9,6 @@ const pkg = path.join(__dirname, '../package.json');
 const { base } = require(appConfigPath);
 const { name } = require(pkg);
 
-resolve(__dirname, './src');
-
 export default {
   history: 'hash',
   treeShaking: true,
