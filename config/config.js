@@ -5,7 +5,9 @@ import proxy from './proxy.config';
 import themeConfig from './theme.config';
 
 const appConfigPath = path.join(__dirname, '../public/app.config.json');
+const pkg = path.join(__dirname, '../package.json');
 const { base } = require(appConfigPath);
+const { name } = require(pkg);
 
 resolve(__dirname, './src');
 
@@ -16,6 +18,7 @@ export default {
   targets: { ie: 11 },
   base: `${base}/`,
   publicPath: './',
+  mountElementId: name,
   plugins: [
     ['@umijs/plugin-qiankun'],
     [
