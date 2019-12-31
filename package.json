@@ -13,8 +13,7 @@
     "lint-fix:script": "npm run lint:script -- --fix",
     "lint-fix:style": "npm run lint:style -- --fix",
     "lint:script": "eslint . --ext \".js,.jsx,.ts,.tsx\"",
-    "lint:style": "stylelint '{src,components}/**/*.less' --syntax less",
-    "precommit": "lint-staged"
+    "lint:style": "stylelint '{src,components}/**/*.less' --syntax less"
   },
   "dependencies": {
     "@umijs/plugin-qiankun": "^1.3.4",
@@ -50,7 +49,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged && lint-staged"
     }
   },
   "lint-staged": {
