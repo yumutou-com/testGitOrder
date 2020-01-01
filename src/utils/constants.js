@@ -1,9 +1,4 @@
-import path from 'path';
-
-const cwd = process.cwd();
-
-const appConfigPath =path.resolve(cwd, 'public/app.config.json');
-const { base } = require(appConfigPath);
+import { base } from '../../public/app.config.json';
 
 const BASE_DOMAIN = '/';
 

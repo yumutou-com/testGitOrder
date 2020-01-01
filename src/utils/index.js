@@ -1,5 +1,5 @@
 import constants from './constants';
 
-export default {
+export {
   constants,
 };
