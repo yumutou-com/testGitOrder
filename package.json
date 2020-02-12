@@ -1,6 +1,6 @@
 {
-  "name": "sei-app-web",
-  "title":"应用的标题",
+  "name": "<%= projectName %>",
+  "title":"<%= projectName %>",
   "version": "1.0.0",
   "private": true,
   "scripts": {

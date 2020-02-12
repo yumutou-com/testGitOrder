@@ -1,5 +1,5 @@
 {
-  "name": "sei-app-web",
-  "entry": "/sei-app-web",
-  "base": "/sei-app-web"
+  "name": "<%= projectName %>",
+  "entry": "/<%= projectName %>",
+  "base": "/<%= projectName %>"
 }
