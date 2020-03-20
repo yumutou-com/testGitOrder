@@ -2,10 +2,16 @@
  * @Author: Eason 
  * @Date: 2020-02-21 18:03:16 
  * @Last Modified by: Eason
- * @Last Modified time: 2020-03-20 10:25:56
+ * @Last Modified time: 2020-03-20 14:34:10
  */
 import { base } from '../../public/app.config.json';
-const { NODE_ENV, MOCK } = process.env;
+
+/** 服务接口基地址，默认是当前站点的域名地址 */
+const BASE_DOMAIN = '/';
+
+/** 网关地址 */
+const GATEWAY = 'mobileapi-gateway';
+
 /** 
 * 非生产环境下是使用mocker开发，还是与真实后台开发或联调 
 * 注：
@@ -13,8 +19,8 @@ const { NODE_ENV, MOCK } = process.env;
 *    yarn start:no-mock使用真实后台开发或联调
 */
 const getServerPath = function () {
-  if (NODE_ENV !== 'production') {
-    if (MOCK === 'yes') {
+  if (process.env.NODE_ENV !== 'production') {
+    if (process.env.MOCK === 'yes') {
       return '/mocker.api'
     } else {
       return '/service.api'
@@ -22,12 +28,6 @@ const getServerPath = function () {
   }
   return `${BASE_DOMAIN}${GATEWAY}`
 }
-
-/** 服务接口基地址，默认是当前站点的域名地址 */
-const BASE_DOMAIN = '/';
-
-/** 网关地址 */
-const GATEWAY = 'mobileapi-gateway';
 
 /** 项目的站点基地址 */
 const APP_BASE = base;
