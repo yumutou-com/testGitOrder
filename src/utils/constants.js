@@ -2,10 +2,10 @@
  * @Author: Eason 
  * @Date: 2020-02-21 18:03:16 
  * @Last Modified by: Eason
- * @Last Modified time: 2020-02-21 18:05:05
+ * @Last Modified time: 2020-03-20 10:25:56
  */
 import { base } from '../../public/app.config.json';
-
+const { NODE_ENV, MOCK } = process.env;
 /** 
 * 非生产环境下是使用mocker开发，还是与真实后台开发或联调 
 * 注：
@@ -13,11 +13,11 @@ import { base } from '../../public/app.config.json';
 *    yarn start:no-mock使用真实后台开发或联调
 */
 const getServerPath = function () {
-  if (process.env.NODE_ENV !== 'production') {
-    if (process.env.MOCK_SERVER === 'none') {
-      return '/service.api'
-    } else {
+  if (NODE_ENV !== 'production') {
+    if (MOCK === 'yes') {
       return '/mocker.api'
+    } else {
+      return '/service.api'
     }
   }
   return `${BASE_DOMAIN}${GATEWAY}`
