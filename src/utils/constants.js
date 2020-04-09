@@ -2,7 +2,7 @@
  * @Author: Eason 
  * @Date: 2020-02-21 18:03:16 
  * @Last Modified by: Eason
- * @Last Modified time: 2020-03-20 14:34:10
+ * @Last Modified time: 2020-04-09 15:25:55
  */
 import { base } from '../../public/app.config.json';
 
@@ -10,7 +10,7 @@ import { base } from '../../public/app.config.json';
 const BASE_DOMAIN = '/';
 
 /** 网关地址 */
-const GATEWAY = 'mobileapi-gateway';
+const GATEWAY = 'api-gateway';
 
 /** 
 * 非生产环境下是使用mocker开发，还是与真实后台开发或联调 
@@ -23,7 +23,7 @@ const getServerPath = function () {
     if (process.env.MOCK === 'yes') {
       return '/mocker.api'
     } else {
-      return '/service.api'
+      return '/api-gateway'
     }
   }
   return `${BASE_DOMAIN}${GATEWAY}`
