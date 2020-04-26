@@ -1,6 +1,6 @@
 {
-  "name": "tt",
-  "title": "tt",
+  "name": "<%= projectName %>",
+  "title":"<%= projectName %>",
   "version": "1.0.0",
   "private": true,
   "scripts": {
