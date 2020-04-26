@@ -1,8 +1,8 @@
 /*
- * @Author: Eason 
- * @Date: 2020-02-21 18:03:16 
+ * @Author: Eason
+ * @Date: 2020-02-21 18:03:16
  * @Last Modified by: Eason
- * @Last Modified time: 2020-04-09 15:25:55
+ * @Last Modified time: 2020-04-26 14:20:38
  */
 import { base } from '../../public/app.config.json';
 
@@ -12,22 +12,21 @@ const BASE_DOMAIN = '/';
 /** 网关地址 */
 const GATEWAY = 'api-gateway';
 
-/** 
-* 非生产环境下是使用mocker开发，还是与真实后台开发或联调 
+/**
+* 非生产环境下是使用mocker开发，还是与真实后台开发或联调
 * 注：
 *    yarn start 使用mocker
 *    yarn start:no-mock使用真实后台开发或联调
 */
-const getServerPath = function () {
+const getServerPath = () => {
   if (process.env.NODE_ENV !== 'production') {
     if (process.env.MOCK === 'yes') {
-      return '/mocker.api'
-    } else {
-      return '/api-gateway'
+      return '/mocker.api';
     }
+    return '/api-gateway';
   }
-  return `${BASE_DOMAIN}${GATEWAY}`
-}
+  return `${BASE_DOMAIN}${GATEWAY}`;
+};
 
 /** 项目的站点基地址 */
 const APP_BASE = base;
@@ -38,19 +37,19 @@ const LOCAL_PATH = process.env.NODE_ENV !== 'production' ? '..' : `../${APP_BASE
 const SERVER_PATH = getServerPath();
 
 const LOGIN_STATUS = {
-  "SUCCESS": "success",
-  "MULTI_TENANT": "multiTenant",
-  "CAPTCHA_ERROR": "captchaError",
-  "FROZEN": "frozen",
-  "LOCKED": "locked",
-  "FAILURE": "failure"
+  SUCCESS: 'success',
+  MULTI_TENANT: 'multiTenant',
+  CAPTCHA_ERROR: 'captchaError',
+  FROZEN: 'frozen',
+  LOCKED: 'locked',
+  FAILURE: 'failure',
 };
 
-/** 业务模块功能项示例*/
+/** 业务模块功能项示例 */
 const APP_MODULE_BTN_KEY = {
-  "CREATE": `${APP_BASE}_CREATE`,
-  "EDIT": `${APP_BASE}_EDIT`,
-  "DELETE": `${APP_BASE}_DELETE`
+  CREATE: `${APP_BASE}_CREATE`,
+  EDIT: `${APP_BASE}_EDIT`,
+  DELETE: `${APP_BASE}_DELETE`,
 };
 
 export default {

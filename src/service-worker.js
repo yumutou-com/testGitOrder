@@ -1,8 +1,8 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-underscore-dangle */
 /* globals workbox */
 const path = require('path');
+
 const cwd = process.cwd();
 const { version, name } = require(path.resolve(cwd, 'package.json'));
 
@@ -54,20 +54,18 @@ workbox.routing.registerRoute(/\/color.less/, workbox.strategies.networkFirst())
 /**
  * Response to client after skipping waiting with MessageChannel
  */
-addEventListener('message', event => {
+addEventListener('message', (event) => {
   const replyPort = event.ports[0];
   const message = event.data;
   if (replyPort && message && message.type === 'skip-waiting') {
     event.waitUntil(
       self.skipWaiting().then(
-        () =>
-          replyPort.postMessage({
-            error: null,
-          }),
-        error =>
-          replyPort.postMessage({
-            error,
-          }),
+        () => replyPort.postMessage({
+          error: null,
+        }),
+        (error) => replyPort.postMessage({
+          error,
+        }),
       ),
     );
   }
