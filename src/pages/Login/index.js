@@ -47,7 +47,7 @@ class LoginForm extends PureComponent {
     });
   };
 
-  handlerLocaleChange = (locale) => {
+  handlerLocaleChange = locale => {
     const { dispatch } = this.props;
     dispatch({
       type: 'global/changeLocale',
@@ -73,91 +73,93 @@ class LoginForm extends PureComponent {
             </div>
           </div>
           <Form style={{ maxWidth: '300px' }}>
-            {
-              showTenant && (
-                <Item>
+            {showTenant && (
+              <Item>
+                {getFieldDecorator('tenant', {
+                  rules: [
+                    {
+                      required: false,
+                      message: formatMessage({
+                        id: 'login.tenant.required',
+                        defaultMessage: '请输入租户账号',
+                      }),
+                    },
+                  ],
+                })(
+                  <Input
+                    autoFocus="autoFocus"
+                    size="large"
+                    prefix={<ExtIcon antd type="safety" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    placeholder="租户账号"
+                  />,
+                )}
+              </Item>
+            )}
+            <Item>
+              {getFieldDecorator('account', {
+                rules: [
                   {
-                    getFieldDecorator('tenant', {
-                      rules: [{ required: false, message: formatMessage({ id: 'login.tenant.required', defaultMessage: '请输入租户账号' }) }],
-                    })(
-                      <Input
-                        autoFocus="autoFocus"
-                        size="large"
-                        prefix={<ExtIcon antd type="safety" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                        placeholder="租户账号"
-                      />,
-                    )
-                  }
-                </Item>
-              )
-            }
-            <Item>
-              {
-                getFieldDecorator('account', {
-                  rules: [{ required: true, message: formatMessage({ id: 'login.account.required', defaultMessage: '请输入用户名' }) }],
-                })(
-                  <Input
-                    ref={(inst) => {
-                      this.userInput = inst;
-                    }}
-                    size="large"
-                    prefix={<ExtIcon antd type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                    placeholder={formatMessage({ id: 'login.account', defaultMessage: '用户名' })}
-                  />,
-                )
-              }
+                    required: true,
+                    message: formatMessage({
+                      id: 'login.account.required',
+                      defaultMessage: '请输入用户名',
+                    }),
+                  },
+                ],
+              })(
+                <Input
+                  ref={inst => {
+                    this.userInput = inst;
+                  }}
+                  size="large"
+                  prefix={<ExtIcon antd type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  placeholder={formatMessage({ id: 'login.account', defaultMessage: '用户名' })}
+                />,
+              )}
             </Item>
             <Item>
-              {
-                getFieldDecorator('password', {
-                  rules: [{ required: true, message: '请输入密码!' }],
+              {getFieldDecorator('password', {
+                rules: [{ required: true, message: '请输入密码!' }],
+              })(
+                <Input
+                  prefix={<ExtIcon antd type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  size="large"
+                  type="password"
+                  placeholder="密码"
+                />,
+              )}
+            </Item>
+            {showVertifCode && verifyCode ? (
+              <Item>
+                {getFieldDecorator('verifyCode', {
+                  initialValue: '',
+                  rules: [
+                    {
+                      required: true,
+                      message: '请输入验证码!',
+                    },
+                  ],
                 })(
                   <Input
-                    prefix={<ExtIcon antd type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     size="large"
-                    type="password"
-                    placeholder="密码"
+                    disabled={loading.global}
+                    prefix={<ExtIcon antd type="code" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    placeholder="验证码"
+                    addonAfter={<img alt="验证码" onClick={this.handleVertify} src={verifyCode} />}
                   />,
-                )
-              }
-            </Item>
-            {
-              showVertifCode && verifyCode
-                ? (
-                  <Item>
-                    {getFieldDecorator('verifyCode', {
-                      initialValue: '',
-                      rules: [
-                        {
-                          required: true,
-                          message: '请输入验证码!',
-                        },
-                      ],
-                    })(
-                      <Input
-                        size="large"
-                        disabled={loading.global}
-                        prefix={<ExtIcon antd type="code" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                        placeholder="验证码"
-                        addonAfter={<img alt="验证码" onClick={this.handleVertify} src={verifyCode} />}
-                      />,
-                    )}
-                  </Item>
-                )
-                : null
-            }
+                )}
+              </Item>
+            ) : null}
             <Item>
-              {
-                getFieldDecorator('locale', {
-                  initialValue: locale,
-                  rules: [{ required: true }],
-                })(
-                  <Select size="large" onChange={this.handlerLocaleChange}>
-                    <Option value="zh-CN">简体中文</Option>
-                    <Option value="en-US">English</Option>
-                  </Select>,
-                )
-              }
+              {getFieldDecorator('locale', {
+                initialValue: locale,
+                rules: [{ required: true }],
+              })(
+                <Select size="large" onChange={this.handlerLocaleChange}>
+                  <Option value="zh-CN">简体中文</Option>
+                  <Option value="en-US">English</Option>
+                </Select>,
+              )}
             </Item>
             <Item>
               <Button

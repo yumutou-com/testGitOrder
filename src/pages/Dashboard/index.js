@@ -22,7 +22,7 @@ const menuData = [
   },
 ];
 
-const getIcon = (icon) => {
+const getIcon = icon => {
   if (typeof icon === 'string') {
     return <Icon type={icon} />;
   }
@@ -34,17 +34,17 @@ export default class Home extends Component {
     this.getNavMenuItems(menuData);
   }
 
-  getNavMenuItems = (menusData) => {
+  getNavMenuItems = menusData => {
     if (!menusData) {
       return [];
     }
     return menusData
-      .filter((item) => item.name)
-      .map((item) => this.getSubMenuOrItem(item))
-      .filter((item) => item);
+      .filter(item => item.name)
+      .map(item => this.getSubMenuOrItem(item))
+      .filter(item => item);
   };
 
-  getSubMenuTitle = (item) => {
+  getSubMenuTitle = item => {
     const { name } = item;
     return item.icon ? (
       <span>
@@ -56,8 +56,8 @@ export default class Home extends Component {
     );
   };
 
-  getSubMenuOrItem = (item) => {
-    if (item.children && item.children.some((child) => child.name)) {
+  getSubMenuOrItem = item => {
+    if (item.children && item.children.some(child => child.name)) {
       return (
         <SubMenu title={this.getSubMenuTitle(item)} key={item.id}>
           {this.getNavMenuItems(item.children)}
@@ -67,7 +67,7 @@ export default class Home extends Component {
     return <Menu.Item key={item.id}>{this.getMenuItemPath(item)}</Menu.Item>;
   };
 
-  getMenuItemPath = (item) => {
+  getMenuItemPath = item => {
     const { name } = item;
     const { location } = this.props;
     return (

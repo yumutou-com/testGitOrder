@@ -13,11 +13,11 @@ const BASE_DOMAIN = '/';
 const GATEWAY = 'api-gateway';
 
 /**
-* 非生产环境下是使用mocker开发，还是与真实后台开发或联调
-* 注：
-*    yarn start 使用mocker
-*    yarn start:no-mock使用真实后台开发或联调
-*/
+ * 非生产环境下是使用mocker开发，还是与真实后台开发或联调
+ * 注：
+ *    yarn start 使用mocker
+ *    yarn start:no-mock使用真实后台开发或联调
+ */
 const getServerPath = () => {
   if (process.env.NODE_ENV !== 'production') {
     if (process.env.MOCK === 'yes') {

@@ -1,4 +1,3 @@
-
 export default () => {
   // optimize chunks
   // config.output
