@@ -1,6 +1,6 @@
 {
-  "name": "<%= projectName %>",
-  "title":"<%= projectName %>",
+  "name": "pn_projectName_pn",
+  "title":"pn_projectName_pn",
   "version": "1.0.0",
   "private": true,
   "scripts": {
