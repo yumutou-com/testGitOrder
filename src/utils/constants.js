@@ -2,7 +2,7 @@
  * @Author: Eason
  * @Date: 2020-02-21 18:03:16
  * @Last Modified by: Eason
- * @Last Modified time: 2020-04-26 14:20:38
+ * @Last Modified time: 2020-05-30 23:57:41
  */
 import { base } from '../../public/app.config.json';
 
@@ -15,8 +15,8 @@ const GATEWAY = 'api-gateway';
 /**
  * 非生产环境下是使用mocker开发，还是与真实后台开发或联调
  * 注：
- *    yarn start 使用mocker
- *    yarn start:no-mock使用真实后台开发或联调
+ *    yarn start 使用真实后台开发或联调
+ *    yarn start:mock 使用mocker数据模拟
  */
 const getServerPath = () => {
   if (process.env.NODE_ENV !== 'production') {
