@@ -46,6 +46,13 @@ li {
 }
 
 :global {
+  .auto-height {
+    height: 100% !important;
+  }
+  aside.ant-layout-sider {
+    height: 100%;
+    background-color: @white;
+  }
   // input-disabled
   .ant-input[disabled],
   .ant-input.ant-input-disabled {
@@ -84,7 +91,8 @@ li {
           display: inline-block;
           width: 32px;
           height: 32px;
-          line-height: 34px;
+          margin-right: 8px;
+          line-height: 36px;
           border-radius: 4px;
           cursor: pointer;
           transition: all ease-in 0.2s;
@@ -101,6 +109,9 @@ li {
           &.ant-popover-open {
             color: @error-color;
             background-color: fade(@error-color, 15%);
+          }
+          &:last-child {
+            margin-right: 0;
           }
         }
       }
@@ -161,5 +172,20 @@ li {
         width: 320px;
       }
     }
+  }
+  .horizontal,
+  .vertical {
+    display: flex;
+    align-items: center;
+  }
+  .vertical {
+    flex-direction: column;
+  }
+  .center {
+    justify-content: center;
+  }
+  .row-start {
+    flex-grow: 1;
+    align-items: flex-start;
   }
 }
