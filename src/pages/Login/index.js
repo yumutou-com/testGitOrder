@@ -68,13 +68,10 @@ class LoginForm extends PureComponent {
     const { getFieldDecorator } = form;
     const { showTenant, locale, verifyCode, showVertifCode } = global;
     return (
-      <div className={styles['login-form']}>
+      <div className={styles['login-form-box']}>
         <div className="login-form">
           <div className="login-logo">
-            <div className="login-name">
-              {title}
-              -用户登录
-            </div>
+            <div className="login-name">{`${title}-用户登录`}</div>
           </div>
           <Form style={{ maxWidth: '300px' }}>
             {showTenant && (

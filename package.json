@@ -1,6 +1,6 @@
 {
   "name": "pn_projectName_pn",
-  "title":"pn_projectName_pn",
+  "title": "pn_projectName_pn",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -34,7 +34,7 @@
     "umi-plugin-react": "^1.8.4"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
     "@umijs/fabric": "^2.0.8",
     "babel-eslint": "^9.0.0",
     "cross-env": "^6.0.0",
@@ -65,7 +65,9 @@
     }
   },
   "lint-staged": {
-    "**/*.less": ["stylelint --fix --syntax less"],
+    "**/*.less": [
+      "stylelint --fix --syntax less"
+    ],
     "**/*.{js,jsx,tsx,ts,less,md,json}": [
       "prettier --write",
       "git add"
