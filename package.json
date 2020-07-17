@@ -73,8 +73,7 @@
       "git add"
     ],
     "**/*.{js,jsx,ts,tsx}": [
-      "npm run lint-fix:script",
-      "npm run lint:script"
+       "eslint --fix"
     ]
   },
   "optionalDependencies": {
