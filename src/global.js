@@ -65,4 +65,7 @@ if (process.env.NODE_ENV === 'production') {
       });
     });
   }
+  serviceWorker.getRegistration().then(sw => {
+    if (sw) sw.unregister();
+  });
 }
