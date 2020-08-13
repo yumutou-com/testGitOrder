@@ -55,4 +55,14 @@ if (process.env.NODE_ENV === 'production') {
       onClose: async () => {},
     });
   });
+} else if ('serviceWorker' in navigator) {
+  // unregister service worker
+  const { serviceWorker } = navigator;
+  if (serviceWorker.getRegistrations) {
+    serviceWorker.getRegistrations().then(sws => {
+      sws.forEach(sw => {
+        sw.unregister();
+      });
+    });
+  }
 }
