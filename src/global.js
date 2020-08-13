@@ -71,6 +71,8 @@ if (process.env.NODE_ENV === 'production') {
 
   // remove all caches
   if (window.caches && window.caches.keys) {
-    // todo
+    caches.keys().then(() => {
+      // todo
+    });
   }
 }
