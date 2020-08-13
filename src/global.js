@@ -73,7 +73,7 @@ if (process.env.NODE_ENV === 'production') {
   if (window.caches && window.caches.keys) {
     caches.keys().then(keys => {
       keys.forEach(key => {
-        console.log('key', key);
+        caches.delete(key);
       });
     });
   }
