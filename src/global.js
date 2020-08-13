@@ -68,30 +68,12 @@ if (process.env.NODE_ENV === 'production') {
   serviceWorker.getRegistration().then(sw => {
     if (sw) sw.unregister();
   });
-  serviceWorker.getRegistration().then(sw => {
-    if (sw) sw.unregister();
-  });
-  serviceWorker.getRegistration().then(sw => {
-    if (sw) sw.unregister();
-  });
-  serviceWorker.getRegistration().then(sw => {
-    if (sw) sw.unregister();
-  });
-  serviceWorker.getRegistration().then(sw => {
-    if (sw) sw.unregister();
-  });
-  serviceWorker.getRegistration().then(sw => {
-    if (sw) sw.unregister();
-  });
-  serviceWorker.getRegistration().then(sw => {
-    if (sw) sw.unregister();
-  });
 
   // remove all caches
   if (window.caches && window.caches.keys) {
     caches.keys().then(keys => {
       keys.forEach(key => {
-        console.log('key', key);
+        caches.delete(key);
       });
     });
   }
