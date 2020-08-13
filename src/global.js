@@ -70,9 +70,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 
   // remove all caches
-  caches.keys().then(keys => {
-    keys.forEach(key => {
-      caches.delete(key);
-    });
-  });
+  if (window.caches && window.caches.keys) {
+    // todo
+  }
 }
