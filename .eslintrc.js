@@ -34,6 +34,7 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 0,
     'jsx-a11y/anchor-has-content': 0,
     'jsx-a11y/anchor-is-valid': 0,
+    'jsx-a11y/label-has-for': 0,
     'object-curly-newline': 0,
     'implicit-arrow-linebreak': 0,
     'no-unused-expressions': 0,
