@@ -1,36 +1,94 @@
-import React, { PureComponent } from 'react';
-import withRouter from 'umi/withRouter';
-import { setLocale } from 'umi-plugin-react/locale';
-import zhCN from 'suid/lib/locale/zh_CN';
-import enUS from 'antd/lib/locale/en_US';
-import { SuidLocaleProvider, utils } from 'suid';
+import React, { Component } from 'react';
+import { Icon, Menu, Layout } from 'antd';
+import Link from 'umi/link';
+import cls from 'classnames';
+import { ScrollBar } from 'suid';
+import styles from './index.less';
 
-const { storage, constants } = utils;
+const { Header, Content } = Layout;
+const { SubMenu } = Menu;
 
-const languages = {
-  'en-US': zhCN,
-  'zh-CN': enUS,
+const menuData = [
+  {
+    id: '10',
+    name: 'moduleName',
+    children: [
+      {
+        id: '100',
+        name: 'menuName',
+        path: '/moduleName/demo',
+      },
+    ],
+  },
+];
+
+const getIcon = icon => {
+  if (typeof icon === 'string') {
+    return <Icon type={icon} />;
+  }
+  return icon;
 };
 
-@withRouter
-class LoginLayout extends PureComponent {
-  getLang = () => {
-    const locale = storage.sessionStorage.get(constants.CONST_GLOBAL.CURRENT_LOCALE) || 'zh-CN';
-    setLocale(locale);
-    return locale;
+export default class Home extends Component {
+  componentDidMount() {
+    this.getNavMenuItems(menuData);
+  }
+
+  getNavMenuItems = menusData => {
+    if (!menusData) {
+      return [];
+    }
+    return menusData
+      .filter(item => item.name)
+      .map(item => this.getSubMenuOrItem(item))
+      .filter(item => item);
+  };
+
+  getSubMenuTitle = item => {
+    const { name } = item;
+    return item.icon ? (
+      <span>
+        {getIcon(item.icon)}
+        <span>{name}</span>
+      </span>
+    ) : (
+      name
+    );
+  };
+
+  getSubMenuOrItem = item => {
+    if (item.children && item.children.some(child => child.name)) {
+      return (
+        <SubMenu title={this.getSubMenuTitle(item)} key={item.id}>
+          {this.getNavMenuItems(item.children)}
+        </SubMenu>
+      );
+    }
+    return <Menu.Item key={item.id}>{this.getMenuItemPath(item)}</Menu.Item>;
+  };
+
+  getMenuItemPath = item => {
+    const { name } = item;
+    const { location } = this.props;
+    return (
+      <Link to={item.path} replace={item.path === location.pathname}>
+        <span>{name}</span>
+      </Link>
+    );
   };
 
   render() {
-    const locale = this.getLang();
-    const { children } = this.props;
     return (
-      <>
-        <SuidLocaleProvider locale={languages[locale]} antdLocale={locale}>
-          {children}
-        </SuidLocaleProvider>
-      </>
+      <Layout className={cls(styles['main-box'])}>
+        <Header className={cls('menu-header')}>应用路由列表</Header>
+        <Content className={cls('menu-box')}>
+          <ScrollBar>
+            <Menu key="Menu" mode="inline" theme="light">
+              {this.getNavMenuItems(menuData)}
+            </Menu>
+          </ScrollBar>
+        </Content>
+      </Layout>
     );
   }
 }
-
-export default LoginLayout;
