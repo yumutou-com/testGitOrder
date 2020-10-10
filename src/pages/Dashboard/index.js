@@ -23,13 +23,14 @@ export default class Home extends Component {
 
   getSubMenuTitle = item => {
     const { name } = item;
-    return item.icon ? (
-      <span>
-        <span>{name}</span>
-      </span>
-    ) : (
-      name
-    );
+    if (item.icon) {
+      return (
+        <span>
+          <span>{name}</span>
+        </span>
+      );
+    }
+    return name;
   };
 
   getSubMenuOrItem = item => {
