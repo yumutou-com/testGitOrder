@@ -18,10 +18,7 @@ export default class Home extends Component {
     if (!menusData) {
       return [];
     }
-    return menusData
-      .filter(item => item.name)
-      .map(item => this.getSubMenuOrItem(item))
-      .filter(item => item);
+    return menusData;
   };
 
   getSubMenuTitle = item => {
