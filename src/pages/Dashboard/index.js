@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Menu, Layout } from 'antd';
-import Link from 'umi/link';
+import { Menu, Layout } from 'antd';
 import cls from 'classnames';
 import { ScrollBar } from 'suid';
 import styles from './index.less';
@@ -22,13 +21,6 @@ const menuData = [
   },
 ];
 
-const getIcon = icon => {
-  if (typeof icon === 'string') {
-    return <Icon type={icon} />;
-  }
-  return icon;
-};
-
 class Home extends Component {
   getNavMenuItems = menusData => {
     if (!menusData) {
@@ -40,37 +32,15 @@ class Home extends Component {
       .filter(item => item);
   };
 
-  getSubMenuTitle = item => {
-    const { name } = item;
-    return item.icon ? (
-      <span>
-        {getIcon(item.icon)}
-        <span>{name}</span>
-      </span>
-    ) : (
-      name
-    );
-  };
-
   getSubMenuOrItem = item => {
     if (item.children && item.children.some(child => child.name)) {
       return (
-        <SubMenu title={this.getSubMenuTitle(item)} key={item.id}>
-          {this.getNavMenuItems(item.children)}
+        <SubMenu title={item} key={item.id}>
+          {item.children}
         </SubMenu>
       );
     }
-    return <Menu.Item key={item.id}>{this.getMenuItemPath(item)}</Menu.Item>;
-  };
-
-  getMenuItemPath = item => {
-    const { name } = item;
-    const { location } = this.props;
-    return (
-      <Link to={item.path} replace={item.path === location.pathname}>
-        <span>{name}</span>
-      </Link>
-    );
+    return <Menu.Item key={item.id}>{item}</Menu.Item>;
   };
 
   render() {
