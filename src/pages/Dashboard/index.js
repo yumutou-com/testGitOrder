@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Menu, Layout } from 'antd';
 import cls from 'classnames';
 import { ScrollBar } from 'suid';
-import styles from './index.less';
+import styles from 'index.less';
 
 const { Header, Content } = Layout;
 
