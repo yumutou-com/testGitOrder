@@ -30,10 +30,6 @@ const getIcon = icon => {
 };
 
 class Home extends Component {
-  componentDidMount() {
-    this.getNavMenuItems(menuData);
-  }
-
   getNavMenuItems = menusData => {
     if (!menusData) {
       return [];
