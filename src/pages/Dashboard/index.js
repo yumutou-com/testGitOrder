@@ -9,14 +9,18 @@ const menuData = [
   {
     id: '10',
     name: 'moduleName',
+    children: [
+      {
+        id: '100',
+        name: 'menuName',
+        path: '/moduleName/demo',
+      },
+    ],
   },
 ];
 
+// eslint-disable-next-line react/prefer-stateless-function
 class Home extends Component {
-  componentDidMount() {
-    console.log('tst');
-  }
-
   render() {
     return (
       <Layout className={cls('main-box')}>
