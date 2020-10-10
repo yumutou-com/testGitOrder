@@ -1,71 +1,36 @@
-import React, { Component } from 'react';
-import { Menu, Layout } from 'antd';
-import Link from 'umi/link';
-import cls from 'classnames';
-import { ScrollBar } from 'suid';
-import styles from './index.less';
+import React, { PureComponent } from 'react';
+import withRouter from 'umi/withRouter';
+import { setLocale } from 'umi-plugin-react/locale';
+import zhCN from 'suid/lib/locale/zh_CN';
+import enUS from 'antd/lib/locale/en_US';
+import { SuidLocaleProvider, utils } from 'suid';
 
-const { Header, Content } = Layout;
-const { SubMenu } = Menu;
-const menuData = [];
+const { storage, constants } = utils;
 
-export default class Home extends Component {
-  componentDidMount() {
-    this.getNavMenuItems(menuData);
-  }
+const languages = {
+  'en-US': zhCN,
+  'zh-CN': enUS,
+};
 
-  getNavMenuItems = menusData => {
-    if (!menusData) {
-      return [];
-    }
-    return menusData;
-  };
-
-  getSubMenuTitle = item => {
-    const { name } = item;
-    if (item.icon) {
-      return (
-        <span>
-          <span>{name}</span>
-        </span>
-      );
-    }
-    return name;
-  };
-
-  getSubMenuOrItem = item => {
-    if (item.children && item.children.some(child => child.name)) {
-      return (
-        <SubMenu title={this.getSubMenuTitle(item)} key={item.id}>
-          {this.getNavMenuItems(item.children)}
-        </SubMenu>
-      );
-    }
-    return null;
-  };
-
-  getMenuItemPath = item => {
-    const { name } = item;
-    const { location } = this.props;
-    return (
-      <Link to={item.path} replace={item.path === location.pathname}>
-        <span>{name}</span>
-      </Link>
-    );
+@withRouter
+class LoginLayout extends PureComponent {
+  getLang = () => {
+    const locale = storage.sessionStorage.get(constants.CONST_GLOBAL.CURRENT_LOCALE) || 'zh-CN';
+    setLocale(locale);
+    return locale;
   };
 
   render() {
+    const locale = this.getLang();
+    const { children } = this.props;
     return (
-      <Layout className={cls(styles['main-box'])}>
-        <Header className={cls('menu-header')}>应用路由列表</Header>
-        <Content className={cls('menu-box')}>
-          <ScrollBar>
-            <Menu key="Menu" mode="inline" theme="light">
-              {this.getNavMenuItems(menuData)}
-            </Menu>
-          </ScrollBar>
-        </Content>
-      </Layout>
+      <>
+        <SuidLocaleProvider locale={languages[locale]} antdLocale={locale}>
+          {children}
+        </SuidLocaleProvider>
+      </>
     );
   }
 }
+
+export default LoginLayout;
