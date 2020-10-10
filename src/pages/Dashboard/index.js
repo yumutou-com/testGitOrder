@@ -40,7 +40,7 @@ export default class Home extends Component {
         </SubMenu>
       );
     }
-    return <Menu.Item key={item.id}>{this.getMenuItemPath(item)}</Menu.Item>;
+    return null;
   };
 
   getMenuItemPath = item => {
