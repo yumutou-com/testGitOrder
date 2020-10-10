@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Menu, Layout } from 'antd';
+import { Menu, Layout } from 'antd';
 import Link from 'umi/link';
 import cls from 'classnames';
 import { ScrollBar } from 'suid';
@@ -7,15 +7,7 @@ import styles from './index.less';
 
 const { Header, Content } = Layout;
 const { SubMenu } = Menu;
-
 const menuData = [];
-
-const getIcon = icon => {
-  if (typeof icon === 'string') {
-    return <Icon type={icon} />;
-  }
-  return icon;
-};
 
 export default class Home extends Component {
   componentDidMount() {
@@ -36,7 +28,6 @@ export default class Home extends Component {
     const { name } = item;
     return item.icon ? (
       <span>
-        {getIcon(item.icon)}
         <span>{name}</span>
       </span>
     ) : (
