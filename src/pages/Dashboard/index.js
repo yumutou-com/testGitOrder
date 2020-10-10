@@ -29,7 +29,7 @@ const getIcon = icon => {
   return icon;
 };
 
-export default class Home extends Component {
+class Home extends Component {
   componentDidMount() {
     this.getNavMenuItems(menuData);
   }
@@ -92,3 +92,5 @@ export default class Home extends Component {
     );
   }
 }
+
+export default Home;
