@@ -8,19 +8,7 @@ import styles from './index.less';
 const { Header, Content } = Layout;
 const { SubMenu } = Menu;
 
-const menuData = [
-  {
-    id: '10',
-    name: 'moduleName',
-    children: [
-      {
-        id: '100',
-        name: 'menuName',
-        path: '/moduleName/demo',
-      },
-    ],
-  },
-];
+const menuData = [];
 
 const getIcon = icon => {
   if (typeof icon === 'string') {
