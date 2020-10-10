@@ -5,7 +5,6 @@ import { ScrollBar } from 'suid';
 import styles from './index.less';
 
 const { Header, Content } = Layout;
-const { SubMenu } = Menu;
 
 const menuData = [
   {
@@ -21,28 +20,8 @@ const menuData = [
   },
 ];
 
+// eslint-disable-next-line react/prefer-stateless-function
 class Home extends Component {
-  getNavMenuItems = menusData => {
-    if (!menusData) {
-      return [];
-    }
-    return menusData
-      .filter(item => item.name)
-      .map(item => this.getSubMenuOrItem(item))
-      .filter(item => item);
-  };
-
-  getSubMenuOrItem = item => {
-    if (item.children && item.children.some(child => child.name)) {
-      return (
-        <SubMenu title={item} key={item.id}>
-          {item.children}
-        </SubMenu>
-      );
-    }
-    return <Menu.Item key={item.id}>{item}</Menu.Item>;
-  };
-
   render() {
     return (
       <Layout className={cls(styles['main-box'])}>
@@ -50,7 +29,7 @@ class Home extends Component {
         <Content className={cls('menu-box')}>
           <ScrollBar>
             <Menu key="Menu" mode="inline" theme="light">
-              {this.getNavMenuItems(menuData)}
+              {menuData}
             </Menu>
           </ScrollBar>
         </Content>
