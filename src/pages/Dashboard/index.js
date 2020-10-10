@@ -24,7 +24,7 @@ const menuData = [
 class Home extends Component {
   render() {
     return (
-      <Layout className={cls(styles['main-box'])}>
+      <Layout className={cls(styles('main-box'))}>
         <Header className={cls('menu-header')}>应用路由列表</Header>
         <Content className={cls('menu-box')}>
           <ScrollBar>
