@@ -73,7 +73,7 @@ class LoginForm extends PureComponent {
           <div className="login-logo">
             <div className="login-name">{`${title}-用户登录`}</div>
           </div>
-          <Form>
+          <Form style={{ maxWidth: '300px' }}>
             {showTenant && (
               <Item>
                 {getFieldDecorator('tenant', {
@@ -90,7 +90,7 @@ class LoginForm extends PureComponent {
                   <Input
                     autoFocus="autoFocus"
                     size="large"
-                    prefix={<ExtIcon antd type="safety" />}
+                    prefix={<ExtIcon antd type="safety" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     placeholder="租户账号"
                   />,
                 )}
@@ -113,7 +113,7 @@ class LoginForm extends PureComponent {
                     this.userInput = inst;
                   }}
                   size="large"
-                  prefix={<ExtIcon antd type="user" />}
+                  prefix={<ExtIcon antd type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   placeholder={formatMessage({ id: 'login.account', defaultMessage: '用户名' })}
                 />,
               )}
@@ -123,7 +123,7 @@ class LoginForm extends PureComponent {
                 rules: [{ required: true, message: '请输入密码!' }],
               })(
                 <Input
-                  prefix={<ExtIcon antd type="lock" />}
+                  prefix={<ExtIcon antd type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   size="large"
                   type="password"
                   placeholder="密码"
@@ -144,7 +144,7 @@ class LoginForm extends PureComponent {
                   <Input
                     size="large"
                     disabled={loading.global}
-                    prefix={<ExtIcon antd type="code" />}
+                    prefix={<ExtIcon antd type="code" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     placeholder="验证码"
                     addonAfter={<img alt="验证码" onClick={this.handleVertify} src={verifyCode} />}
                   />,
@@ -169,6 +169,7 @@ class LoginForm extends PureComponent {
                 size="large"
                 className="login-form-button"
                 onClick={this.handlerSubmit}
+                style={{ width: '100%' }}
                 loading={loading.global}
               >
                 登录
