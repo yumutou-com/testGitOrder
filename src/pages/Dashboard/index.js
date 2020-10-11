@@ -3,7 +3,7 @@ import { Icon, Menu, Layout } from 'antd';
 import Link from 'umi/link';
 import cls from 'classnames';
 import { ScrollBar } from 'suid';
-import style from './index.less';
+import styl from './index.less';
 
 const { Header, Content } = Layout;
 const { SubMenu } = Menu;
@@ -79,7 +79,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <Layout className={cls(style['main-box'])}>
+      <Layout className={cls(styl['main-box'])}>
         <Header className={cls('menu-header')}>应用路由列表</Header>
         <Content className={cls('menu-box')}>
           <ScrollBar>
