@@ -5,7 +5,7 @@ import { formatMessage } from 'umi-plugin-react/locale';
 import { Button, Form, Input, Select } from 'antd';
 import { utils, ExtIcon } from 'suid';
 import { title } from '../../../package.json';
-import styl from './index.less';
+import styles from './index.less';
 
 const { Item } = Form;
 const { Option } = Select;
@@ -68,7 +68,7 @@ class LoginForm extends PureComponent {
     const { getFieldDecorator } = form;
     const { showTenant, locale, verifyCode, showVertifCode } = global;
     return (
-      <div className={styl['login-form-box']}>
+      <div className={styles['login-form-box']}>
         <div className="login-form">
           <div className="login-logo">
             <div className="login-name">{`${title}-用户登录`}</div>
