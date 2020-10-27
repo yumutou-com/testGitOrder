@@ -2,6 +2,7 @@ node_modules
 *.html
 /components/test/*
 dist
+public
 package.json
 .umi
 .umi-production
