@@ -1,6 +1,7 @@
 import pwa from './en-US/pwa';
 
 export default {
+  'cancel.request': 'Last request not completed',
   'app.request.error': 'Interface request exception',
   'app.request.info': 'Request info',
   'app.request.401': 'Session exception',

@@ -1,6 +1,7 @@
 import pwa from './zh-CN/pwa';
 
 export default {
+  'cancel.request': '上一次请求未完成',
   'app.request.error': '接口请求异常',
   'app.request.info': '接口请求提示',
   'app.request.401': '会话异常',
