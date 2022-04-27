@@ -1,4 +1,5 @@
 import pwa from './zh-CN/pwa';
+import login from './zh-CN/login';
 
 export default {
   'cancel.request': '上一次请求未完成',
@@ -7,6 +8,7 @@ export default {
   'app.request.401': '会话异常',
   'app.request.401.message': '当前会话超时或失效，请重新登录',
   ...pwa,
+  ...login,
   'global.operation': '操作',
   'global.code': '代码',
   'global.code.tip': '规则:名称各汉字首字母大写',
