@@ -8,8 +8,8 @@ import { SuidLocaleProvider, utils } from 'suid';
 const { storage, constants } = utils;
 
 const languages = {
-  'en-US': zhCN,
-  'zh-CN': enUS,
+  'en-US': enUS,
+  'zh-CN': zhCN,
 };
 
 @withRouter
