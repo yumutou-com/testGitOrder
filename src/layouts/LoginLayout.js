@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import withRouter from 'umi/withRouter';
 import { setLocale } from 'umi-plugin-react/locale';
-import zhCN from 'suid/lib/locale/zh_CN';
+import zhCN from '@sei/suid/lib/locale/zh_CN';
 import enUS from 'antd/lib/locale/en_US';
-import { SuidLocaleProvider, utils } from 'suid';
+import { SuidLocaleProvider, utils } from '@sei/suid';
 
 const { storage, constants } = utils;
 

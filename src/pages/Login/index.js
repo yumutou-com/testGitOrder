@@ -3,7 +3,7 @@ import md5 from 'md5';
 import { connect } from 'dva';
 import { formatMessage } from 'umi-plugin-react/locale';
 import { Button, Form, Input, Select } from 'antd';
-import { utils, ExtIcon } from 'suid';
+import { utils, ExtIcon } from '@sei/suid';
 import { title } from '../../../package.json';
 import styles from './index.less';
 

@@ -1,4 +1,4 @@
-import { utils } from 'suid';
+import { utils } from '@sei/suid';
 import { constants } from '@/utils';
 
 const { request } = utils;

@@ -75,11 +75,11 @@ export default {
     [
       'import',
       {
-        libraryName: 'suid',
+        libraryName: '@sei/suid',
         libraryDirectory: 'es',
         style: true,
       },
-      'suid',
+      '@sei/suid',
     ],
   ],
   lessLoaderOptions: {

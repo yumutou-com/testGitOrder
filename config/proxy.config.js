@@ -6,9 +6,8 @@ export default {
     pathRewrite: { '^/mocker.api': '' },
   },
   '/api-gateway': {
-    target: 'http://dsei.changhong.com/api-gateway',
+    target: 'https://sei6.changhong.com',
     changeOrigin: true,
     secure: false,
-    pathRewrite: { '^/api-gateway': '' },
   },
 };

@@ -10,13 +10,15 @@ export default [
   {
     path: '/',
     component: '../layouts/AuthLayout',
+    title: '开发菜单',
     routes: [
       { path: '/', redirect: '/dashboard' },
       { path: '/dashboard', component: './Dashboard' },
       {
         path: '/moduleName',
         name: 'moduleName',
-        routes: [{ path: '/moduleName/demo', component: './Demo' }],
+        title: '模块',
+        routes: [{ title: '示例页面', path: '/moduleName/demo', component: './Demo' }],
       },
     ],
   },

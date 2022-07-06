@@ -1,8 +1,8 @@
 /*
  * @Author: Eason
  * @Date: 2020-02-21 18:03:16
- * @Last Modified by: Eason
- * @Last Modified time: 2020-05-30 23:57:41
+ * @Last Modified by: zp
+ * @Last Modified time: 2022-07-06 16:31:07
  */
 import { base } from '../../public/app.config.json';
 
@@ -33,7 +33,7 @@ const APP_BASE = base;
 
 /** 站点的地址，用于获取本站点的静态资源如json文件，xls数据导入模板等等 */
 const LOCAL_PATH = process.env.NODE_ENV !== 'production' ? '..' : `../${APP_BASE}`;
-
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 const SERVER_PATH = getServerPath();
 
 const LOGIN_STATUS = {
@@ -58,4 +58,5 @@ export default {
   SERVER_PATH,
   APP_MODULE_BTN_KEY,
   LOGIN_STATUS,
+  IS_PRODUCTION,
 };

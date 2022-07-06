@@ -1,10 +1,10 @@
 /*
  * @Author: zp
  * @Date:   2020-02-17 09:41:03
- * @Last Modified by: Eason
- * @Last Modified time: 2020-04-26 14:21:07
+ * @Last Modified by: zp
+ * @Last Modified time: 2022-07-06 15:39:45
  */
-import { utils } from 'suid';
+import { utils } from '@sei/suid';
 
 const { getContextUser, storage } = utils;
 const { sessionStorage, localStorage } = storage;
