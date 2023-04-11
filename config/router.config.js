@@ -20,6 +20,8 @@ export default [
         title: '模块',
         routes: [{ title: '示例页面', path: '/moduleName/demo', component: './Demo' }],
       },
+      { path: '/demoTable', name: '示例表单', title: '示例表单', component: './DemoTable' },
+      { path: '/demoTableModel', name: '示例表单model', title: '示例表单model', component: './DemoTableModel' },
     ],
   },
 ];
