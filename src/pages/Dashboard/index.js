@@ -22,6 +22,8 @@ export default () => {
               }}
             >
               欢迎来到本模块进行开发
+              <Button type='primary' style={{marginRight: 8}}>btn1</Button>
+              <Button>btn2</Button>
             </div>
           }
         >
